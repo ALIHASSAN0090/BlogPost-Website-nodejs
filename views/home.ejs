@@ -1,0 +1,45 @@
+<!-- to add header.ejs  -->
+<%- include('partials/header.ejs') -%> 
+
+<h1>Home</h1>
+
+<div>
+    <p><%= startingcontent %></p>
+</div>
+
+
+<% posts.forEach(function(post) { %>
+  <div>
+    <% if (post && post.title !== undefined && post.post !== undefined) { %>
+      <% let maxLength = 100; %>
+      <% let truncatedPara = post.post.slice(0, maxLength); %>
+      <h1><%= post.title %></h1> 
+      <p><%= truncatedPara %>...</p>
+      <a href="/posts/<%= post._id %>">Read More</a> <!-- Redirect to post.ejs page -->
+    <% } else { %>
+      <!-- Log post object for debugging -->
+      <pre><%= JSON.stringify(post.title, post.post, null, 2) %></pre>
+    <% } %>
+  </div>
+<% }) %>
+
+
+
+
+   
+   <div class="container">
+    <div class="navbar-header">
+      
+    </div>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- 6 -->
+        
+        <!-- <li id="newpost" name=" buttonADD"><button ><a href="/compose">+</a></button></a>
+      </ul> -->
+      <button class="btn3"><a class="btn4" href="/compose">+</a></button>
+  </div>
+ 
+
+
+<!-- to add footer.ejs  -->
+<%- include('partials/footer.ejs') -%>
